@@ -15,12 +15,18 @@
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&family=PT+Sans:wght@400;700&display=swap"
         rel="stylesheet">
 
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/site.webmanifest">
+
     <title>To Do Application</title>
 </head>
 
 <body>
     <header class="header">
-        <a href="index.html" class="logo">
+        <a href="/" class="logo">
             <h1 class="logo__text">To<span class="logo__bold">Do</span></h1>
             <h4 class="logo__text">Cloud aplication</h4>
         </a>
@@ -51,8 +57,11 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody class="table__body">
+                <tbody class="table__body" id="table__body">
                     <tr>
+                        <td scope="row" colspan="5">Loading...</th>
+                    </tr>
+                    <!-- <tr>
                         <td>{id}</td>
                         <td>{title}</td>
                         <td>{status}</td>
@@ -81,457 +90,7 @@
                                 </svg>
                             </button>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{id}</td>
-                        <td>{title}</td>
-                        <td>{status}</td>
-                        <td>{date}</td>
-                        <td class="table__actions">
-                            <button class="action action--edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
-                                </svg>
-                            </button>
-                            <button class="action action--delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                    width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 7l16 0" />
-                                    <path d="M10 11l0 6" />
-                                    <path d="M14 11l0 6" />
-                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>
@@ -542,7 +101,7 @@
 
     <!-- Add Modal -->
     <div class="addmodal modal">
-        <form action="#" class="form">
+        <form action="" class="form" onsubmit="todoCreate()">
             <fieldset class="fieldset">
                 <legend class="legend">
                     <h4 class="legend__title">Add new ToDo</h4>
@@ -555,16 +114,18 @@
                     </svg>
                 </legend>
                 <div class="entry">
-                    <input type="text" name="title" id="title" class="entry__input" required autofocus>
-                    <label for="title" class="entry__placeholder">Title</label>
+                    <input type="text" name="title" id="title--add" class="entry__input" required autofocus>
+                    <label for="title--add" class="entry__placeholder">Title</label>
                 </div>
                 <div class="entry">
-                    <input type="date" name="date" id="date" class="entry__input" min="2024-01-01" max="9999-12-31" required>
-                    <label for="date" class="entry__placeholder">Date</label>
+                    <input type="date" name="date" id="date--add" class="entry__input" min="2024-01-01" max="9999-12-31"
+                        required>
+                    <label for="date--add" class="entry__placeholder">Date</label>
                 </div>
                 <div class="entry">
-                    <textarea name="description" id="description" class="entry__input" cols="30" rows="4%"></textarea>
-                    <label for="description" class="entry__placeholder"><Data></Data>Description</label>
+                    <textarea name="description" id="description--add" class="entry__input" cols="30"
+                        rows="4%"></textarea>
+                    <label for="description--add" class="entry__placeholder"><Data></Data>Description</label>
                 </div>
                 <input type="submit" value="Done" class="fieldset__submit">
             </fieldset>
@@ -572,8 +133,8 @@
     </div>
 
     <!-- Edit Modal -->
-    <div class="editmodal modal">
-        <form action="#" class="form">
+    <div class="editmodal modal" on>
+        <form action="#" class="form" onsubmit="todoEdit()">
             <fieldset class="fieldset">
                 <legend class="legend">
                     <h4 class="legend__title">Edit ToDo</h4>
@@ -586,35 +147,37 @@
                     </svg>
                 </legend>
                 <div class="entry">
-                    <input type="number" name="id" id="id" class="entry__input" value="1234" style="user-select: none;"
+                    <input type="number" name="id" id="id--edit" class="entry__input" style="user-select: none;"
                         readonly>
-                    <label for="id" class="entry__placeholder">Id</label>
+                    <label for="id--edit" class="entry__placeholder">Id</label>
                 </div>
                 <div class="entry">
-                    <input type="text" name="title" id="title" class="entry__input" required value="{title}">
-                    <label for="title" class="entry__placeholder">Title</label>
+                    <input type="text" name="title" id="title--edit" class="entry__input" required>
+                    <label for="title--edit" class="entry__placeholder">Title</label>
                 </div>
                 <div class="entry">
-                    <select name="status" id="status" class="entry__input">
-                        <option value="todo">To Do</option>
-                        <option value="doing">Doing</option>
-                        <option value="done">Done</option>
+                    <select name="status" id="status--edit" class="entry__input">
+                        <option value="ToDo">To Do</option>
+                        <option value="Doing">Doing</option>
+                        <option value="Done">Done</option>
                     </select>
-                    <label for="status" class="entry__placeholder">Status</label>
+                    <label for="status--edit" class="entry__placeholder">Status</label>
                 </div>
                 <div class="entry">
-                    <input type="date" name="date" id="date" class="entry__input" min="2024-01-01" max="9999-12-31" required>
-                    <label for="date" class="entry__placeholder">Date</label>
+                    <input type="date" name="date" id="date--edit" class="entry__input" min="2024-01-01"
+                        max="9999-12-31" required>
+                    <label for="date--edit" class="entry__placeholder">Date</label>
                 </div>
                 <div class="entry">
-                    <textarea name="description" id="description" class="entry__input" cols="30" rows="4%">{description}</textarea>
-                    <label for="description" class="entry__placeholder"><Data></Data>Description</label>
+                    <textarea name="description" id="description--add" class="entry__input" cols="30"
+                        rows="4%"></textarea>
+                    <label for="description--add" class="entry__placeholder"><Data></Data>Description</label>
                 </div>
                 <input type="submit" value="Done" class="fieldset__submit">
             </fieldset>
         </form>
     </div>
-    
+
     <!-- Delete Modal -->
     <div class="deletemodal modal">
         <div class="form">
@@ -633,7 +196,7 @@
                 <div class="options">
                     <button class="option options__cancel">No</button>
                     <button class="option options__accept">Yes, I'm sure</button>
-                </div>                
+                </div>
             </fieldset>
         </div>
     </div>
