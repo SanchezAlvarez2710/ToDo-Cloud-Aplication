@@ -7,17 +7,11 @@ $(".legend__close").click(function () {
 });
 
 /* Edit Modal */
-$(".action--edit").click(function () {
-    $(".editmodal").addClass("modal--active");
-});
 $(".legend__close").click(function () {
     $(".editmodal").removeClass("modal--active");
 });
 
 /* Delete Modal */
-$(".action--delete").click(function () {
-    $(".deletemodal").addClass("modal--active");
-});
 $(".legend__close").click(function () {
     $(".deletemodal").removeClass("modal--active");
 });
@@ -26,10 +20,10 @@ $(".options__cancel").click(function () {
 });
 
 /* DynamoDB Conection */
-const api_root = "https://cdgpy409fg.execute-api.us-east-2.amazonaws.com/register/"
+const api_root = "https://bnlh4b8t3k.execute-api.us-east-2.amazonaws.com/register"
 function loadTable() {
     const xhttp = new XMLHttpRequest();
-    xhttp.open("GET", api_root);
+    xhttp.open("GET", api_root + "/");
     xhttp.send();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -38,13 +32,13 @@ function loadTable() {
             const objects = JSON.parse(this.responseText);
             for (let object of objects["todo"]) {
                 trHTML += '<tr>';
-                trHTML += '<td>' + object['id'] + '</td>';
-                trHTML += '<td>' + object['title'] + '</td>';
-                trHTML += '<td>' + object['status'] + '</td>';
-                trHTML += '<td>' + object['date'] + '</td>';
+                trHTML += '<td>' + object.id + '</td>';
+                trHTML += '<td>' + object.title + '</td>';
+                trHTML += '<td>' + object.status + '</td>';
+                trHTML += '<td>' + object.date + '</td>';
                 trHTML +=
                     '<td class="table__actions">' +
-                    '<button class="action action--edit" onclick="showTodoEditBox(' + object['id'] + ')">' +
+                    '<button type="button" class="action" onclick="showTodoEditBox(' + object.id + ')">' +
                     '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"' +
                     'width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"' +
                     'fill="none" stroke-linecap="round" stroke-linejoin="round">' +
@@ -54,7 +48,7 @@ function loadTable() {
                     '<path d="M16 5l3 3" />' +
                     '</svg>' +
                     '</button>' +
-                    '<button class="action action--delete" onclick="todoDelete(' + object['id'] + ')">' +
+                    '<button type="button" class="action" onclick="todoDelete(' + object.id + ')">' +
                     '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"' +
                     'width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"' +
                     'fill="none" stroke-linecap="round" stroke-linejoin="round">' +
@@ -83,40 +77,39 @@ function todoCreate() {
     const id = (Math.floor(Math.random() * 10001)).toString();
 
     const xhttp = new XMLHttpRequest();
-    const data = JSON.stringify({ "title": title, "status": status, "description": description, "date": date })
-    console.log(data);
-    xhttp.open("POST", api_root);
-    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhttp.send(JSON.stringify({ "id": id, "title": title, "status": status, "description": description, "date": date }));
+    const data = JSON.stringify({ "title": title, "status": status, "description": description, "date": date })    
+
+    xhttp.open("POST", api_root + "/");
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify({ "id": id, "title": title, "status": status, "description": description, "date": date }));      
 
     xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            const objects = JSON.parse(this.responseText);
-            Swal.fire(objects['message']);
-            loadTable();
+        if (this.readyState == 4 && this.status == 200) {            
+            const objects = JSON.parse(this.responseText);   
+            console.log(objects)
         }
-    };
+    };           
 }
 
 function showTodoEditBox(id) {
     id = id.toString()
-    console.log(id);
-
+    
     const xhttp = new XMLHttpRequest();
-    xhttp.open("GET", api_root + "?id=" + id);
+    xhttp.open("GET", api_root + "/param?id=" + id);
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhttp.send(JSON.stringify());
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            const objects = JSON.parse(this.responseText);
+            let objects = JSON.parse(this.responseText);
             console.log(objects)
-            const todo = objects;
-            console.log(todo);
-            document.getElementById("id--edit").value(todo["id"]);
-            document.getElementById("title--edit").value(todo["title"]);
-            document.getElementById("status--edit").value(todo["status"]);
-            document.getElementById("date--edit").value(todo["date"]);
-            document.getElementById("description--edit").value(todo["description"]);
+
+            //Show Modal
+            $(".editmodal").addClass("modal--active");            
+            document.getElementById("id--edit").setAttribute("value", parseInt(objects.id));
+            document.getElementById("title--edit").setAttribute("value", objects.title);
+            document.getElementById("status--edit").setAttribute("value", objects.status);
+            document.getElementById("date--edit").setAttribute("value", objects.date);
+            document.getElementById("description--edit").value = objects.description;
         }
     };
 }
@@ -129,29 +122,31 @@ function todoEdit() {
     const description = document.getElementById("description--edit").value;
 
     const xhttp = new XMLHttpRequest();
-    xhttp.open("PUT", api_root);
-    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.open("PUT", api_root + "/");
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");    
     xhttp.send(JSON.stringify({ "id": id, "title": title, "status": status, "date": date, "description": description}));
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             const objects = JSON.parse(this.responseText);
-            Swal.fire(objects['message']);
-            loadTable();
+            console.log(objects)                                   
+
         }
-    };
+    };        
 }
 
-function todoDelete(id) {
+function todoDelete(id) {    
+    $(".deletemodal").addClass("modal--active");
     id = id.toString()
-    const xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", api_root);
-    xhttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-    xhttp.send(JSON.stringify({ "id": id }));
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            const objects = JSON.parse(this.responseText);
-            Swal.fire(objects['message']);
-            loadTable();
-        }
-    };
+    $(".options__accept").click(function () {  
+        const xhttp = new XMLHttpRequest();
+        xhttp.open("DELETE", api_root + "/");
+        xhttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+        xhttp.send(JSON.stringify({ "id": id }));
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                const objects = JSON.parse(this.responseText);
+                console.log(objects)            
+            };
+        }                
+    })       
 }
