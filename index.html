@@ -30,11 +30,11 @@
             <h1 class="logo__text">To<span class="logo__bold">Do</span></h1>
             <h4 class="logo__text">Cloud aplication</h4>
         </a>
-        <nav class="navbar">
+<!--         <nav class="navbar">
             <a href="todo.html" class="navbar__link">To Do</a>
             <a href="doing.html" class="navbar__link">Doing</a>
             <a href="done.html" class="navbar__link">Done</a>
-        </nav>
+        </nav> -->
         <button class="addTodo">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus addTodo__svg" width="28"
                 height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#363e6b" fill="none" stroke-linecap="round"
@@ -118,6 +118,14 @@
                     <label for="title--add" class="entry__placeholder">Title</label>
                 </div>
                 <div class="entry">
+                    <select name="status" id="status--add" class="entry__input">
+                        <option value="ToDo">To Do</option>
+                        <option value="Doing">Doing</option>
+                        <option value="Done">Done</option>
+                    </select>
+                    <label for="status--edit" class="entry__placeholder">Status</label>
+                </div>
+                <div class="entry">
                     <input type="date" name="date" id="date--add" class="entry__input" min="2024-01-01" max="9999-12-31"
                         required>
                     <label for="date--add" class="entry__placeholder">Date</label>
@@ -134,7 +142,7 @@
 
     <!-- Edit Modal -->
     <div class="editmodal modal">
-        <form action="/" class="form" onsubmit="todoEdit()" method="get">
+        <form action="/" class="form" onsubmit="todoEdit()">
             <fieldset class="fieldset">
                 <legend class="legend">
                     <h4 class="legend__title">Edit ToDo</h4>
@@ -192,7 +200,7 @@
                         <path d="M6 6l12 12" />
                     </svg>
                 </legend>
-                <h4 class="fieldset__message">Are you sure want to delete To Do with {id} id</h4>
+                <h4 class="fieldset__message" id="fieldset__message"></h4>
                 <div class="options">
                     <button type="button" class="option options__cancel">No</button>
                     <input type="submit" value="Yes, I'm sure" class="option options__accept">

@@ -73,7 +73,7 @@ function todoCreate() {
     const title = document.getElementById("title--add").value;
     const date = document.getElementById("date--add").value;
     const description = document.getElementById("description--add").value;
-    const status = "ToDo";
+    const status = document.getElementById("status--add").value;
     const id = (Math.floor(Math.random() * 10001)).toString();
 
     const xhttp = new XMLHttpRequest();
@@ -107,7 +107,7 @@ function showTodoEditBox(id) {
             $(".editmodal").addClass("modal--active");            
             document.getElementById("id--edit").setAttribute("value", parseInt(objects.id));
             document.getElementById("title--edit").setAttribute("value", objects.title);
-            document.getElementById("status--edit").setAttribute("value", objects.status);
+            document.getElementById("status--edit").value = objects.status;
             document.getElementById("date--edit").setAttribute("value", objects.date);
             document.getElementById("description--edit").value = objects.description;
         }
@@ -122,7 +122,7 @@ function todoEdit() {
     const description = document.getElementById("description--edit").value;
 
     const xhttp = new XMLHttpRequest();
-    xhttp.open("PUT", api_root + "/");
+    xhttp.open("PATCH", api_root + "/");
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");    
     xhttp.send(JSON.stringify({ "id": id, "title": title, "status": status, "date": date, "description": description}));
     xhttp.onreadystatechange = function () {
@@ -136,6 +136,7 @@ function todoEdit() {
 
 function todoDelete(id) {    
     $(".deletemodal").addClass("modal--active");
+    document.getElementById("fieldset__message").innerHTML = "Are you sure want to delete To Do with " + id + " id?"
     id = id.toString()
     $(".options__accept").click(function () {  
         const xhttp = new XMLHttpRequest();
