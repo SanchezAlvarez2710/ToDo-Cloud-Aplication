@@ -118,14 +118,6 @@
                     <label for="title--add" class="entry__placeholder">Title</label>
                 </div>
                 <div class="entry">
-                    <select name="status" id="status--add" class="entry__input">
-                        <option value="ToDo">To Do</option>
-                        <option value="Doing">Doing</option>
-                        <option value="Done">Done</option>
-                    </select>
-                    <label for="status--edit" class="entry__placeholder">Status</label>
-                </div>
-                <div class="entry">
                     <input type="date" name="date" id="date--add" class="entry__input" min="2024-01-01" max="9999-12-31"
                         required>
                     <label for="date--add" class="entry__placeholder">Date</label>
@@ -142,7 +134,7 @@
 
     <!-- Edit Modal -->
     <div class="editmodal modal">
-        <form action="/" class="form" onsubmit="todoEdit()">
+        <form action="/" class="form" onsubmit="todoEdit()" method="get">
             <fieldset class="fieldset">
                 <legend class="legend">
                     <h4 class="legend__title">Edit ToDo</h4>
@@ -164,8 +156,8 @@
                     <label for="title--edit" class="entry__placeholder">Title</label>
                 </div>
                 <div class="entry">
-                    <select name="status" id="status--edit" class="entry__input">
-                        <option value="ToDo">To Do</option>
+                    <select name="status" id="status--edit" class="entry__input" title="Status">
+                        <option value="ToDo">ToDo</option>
                         <option value="Doing">Doing</option>
                         <option value="Done">Done</option>
                     </select>

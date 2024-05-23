@@ -20,7 +20,7 @@ $(".options__cancel").click(function () {
 });
 
 /* DynamoDB Conection */
-const api_root = "https://bnlh4b8t3k.execute-api.us-east-2.amazonaws.com/register"
+const api_root = "https://7orn2d3yq7.execute-api.us-east-1.amazonaws.com/register"
 function loadTable() {
     const xhttp = new XMLHttpRequest();
     xhttp.open("GET", api_root + "/");
@@ -73,7 +73,7 @@ function todoCreate() {
     const title = document.getElementById("title--add").value;
     const date = document.getElementById("date--add").value;
     const description = document.getElementById("description--add").value;
-    const status = document.getElementById("status--add").value;
+    const status = "ToDo";
     const id = (Math.floor(Math.random() * 10001)).toString();
 
     const xhttp = new XMLHttpRequest();
@@ -122,7 +122,8 @@ function todoEdit() {
     const description = document.getElementById("description--edit").value;
 
     const xhttp = new XMLHttpRequest();
-    xhttp.open("PATCH", api_root + "/");
+    
+    xhttp.open("PUT", api_root + "/");
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");    
     xhttp.send(JSON.stringify({ "id": id, "title": title, "status": status, "date": date, "description": description}));
     xhttp.onreadystatechange = function () {
