@@ -20,7 +20,21 @@ $(".options__cancel").click(function () {
 });
 
 /* DynamoDB Conection */
-const api_root = "https://7orn2d3yq7.execute-api.us-east-1.amazonaws.com/register"
+const api_root = "https://3p50ycox07.execute-api.us-east-1.amazonaws.com/register"
+
+var currentPath = window.location.pathname
+console.log("Actual path: " + currentPath)
+
+if (currentPath == "/") {
+    loadTable();
+} else if (currentPath == "/todo.html"){
+    loadTableStatus("To Do");    
+} else if(currentPath == "/doing.html"){    
+    loadTableStatus("Doing");
+} else if (currentPath == "/done.html"){
+    loadTableStatus("Done");
+}
+
 function loadTable() {
     const xhttp = new XMLHttpRequest();
     xhttp.open("GET", api_root + "/");
@@ -67,13 +81,60 @@ function loadTable() {
         }
     };
 }
-loadTable();
+
+function loadTableStatus(status) {
+    console.log("Entro -->" + status)
+    const xhttp = new XMLHttpRequest();    
+    xhttp.open("GET", api_root + "/?status=" + status);
+    xhttp.send();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            var trHTML = '';
+            const objects = JSON.parse(this.responseText);
+            for (let object of objects["todo"]) {
+                trHTML += '<tr>';
+                trHTML += '<td>' + object.id + '</td>';
+                trHTML += '<td>' + object.title + '</td>';
+                trHTML += '<td>' + object.status + '</td>';
+                trHTML += '<td>' + object.date + '</td>';
+                trHTML +=
+                    '<td class="table__actions">' +
+                    '<button type="button" class="action" onclick="showTodoEditBox(' + object.id + ')">' +
+                    '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"' +
+                    'width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"' +
+                    'fill="none" stroke-linecap="round" stroke-linejoin="round">' +
+                    '<path stroke="none" d="M0 0h24v24H0z" fill="none" />' +
+                    '<path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />' +
+                    '<path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />' +
+                    '<path d="M16 5l3 3" />' +
+                    '</svg>' +
+                    '</button>' +
+                    '<button type="button" class="action" onclick="todoDelete(' + object.id + ')">' +
+                    '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"' +
+                    'width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#363e6b"' +
+                    'fill="none" stroke-linecap="round" stroke-linejoin="round">' +
+                    '<path stroke="none" d="M0 0h24v24H0z" fill="none" />' +
+                    '<path d="M4 7l16 0" />' +
+                    '<path d="M10 11l0 6" />' +
+                    '<path d="M14 11l0 6" />' +
+                    '<path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />' +
+                    '<path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />' +
+                    '</svg>' +
+                    '</button>' +
+                    '</td>'
+                trHTML += "</tr>";
+            }
+            document.getElementById("table__body").innerHTML = trHTML;
+        }
+    };
+}
 
 function todoCreate() {
     const title = document.getElementById("title--add").value;
     const date = document.getElementById("date--add").value;
     const description = document.getElementById("description--add").value;
-    const status = "ToDo";
+    const status = "To Do";
     const id = (Math.floor(Math.random() * 10001)).toString();
 
     const xhttp = new XMLHttpRequest();
@@ -95,7 +156,7 @@ function showTodoEditBox(id) {
     id = id.toString()
     
     const xhttp = new XMLHttpRequest();
-    xhttp.open("GET", api_root + "/param?id=" + id);
+    xhttp.open("GET", api_root + "/?id=" + id);
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhttp.send(JSON.stringify());
     xhttp.onreadystatechange = function () {
